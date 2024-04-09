@@ -1,3 +1,11 @@
+import {
+    Table,
+    TableCell,
+    TableRow,
+    TableBody,
+    CenteredContent,
+    CircularLoader,
+} from '@dhis2/ui'
 import React from 'react'
 import { useGetAttributes } from '../hooks/index.js'
 
@@ -14,9 +22,18 @@ export const Attributes = () => {
             {
                 // if there is any data available
                 data?.attributes?.attributes && (
-                    <pre>
-                        {JSON.stringify(data.attributes.attributes, null, 4)}
-                    </pre>
+                    <Table>
+                        <TableBody>
+                            {data.attributes.attributes.map((row) => (
+                                <TableRow key={row.id}>
+                                    <TableCell>{row.displayName}</TableCell>
+                                    <TableCell>
+                                        {row.unique ? 'Y' : 'N'}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
                 )
             }
         </div>
