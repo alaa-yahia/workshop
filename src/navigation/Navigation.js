@@ -1,6 +1,7 @@
+import { MenuItem, Menu } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
-
+// @TODO: Import the `Menu` and `MenuItem` components
 import { useNavigate, useMatch } from 'react-router-dom'
 
 const NavigationItem = ({ path, label }) => {
@@ -17,7 +18,7 @@ const NavigationItem = ({ path, label }) => {
     const onClick = () => navigate(path)
 
     // @TODO: Use the `MenuItem` component instead of the `div`
-    return <div>{label}</div>
+    return <MenuItem label={label} onClick={onClick} />
 }
 
 NavigationItem.propTypes = {
@@ -27,7 +28,7 @@ NavigationItem.propTypes = {
 
 export const Navigation = () => (
     // @TODO: Use the `Menu` components instead of the `div`
-    <div>
+    <Menu>
         <NavigationItem
             // Menu item for the home page
             label="Home"
@@ -45,5 +46,5 @@ export const Navigation = () => (
             label="Form"
             path="/form"
         />
-    </div>
+    </Menu>
 )
